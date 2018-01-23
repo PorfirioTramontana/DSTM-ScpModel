@@ -2,8 +2,8 @@ import java.io.IOException;
 
 import input.InputData;
 import control.DSTM;
+import strategy.DeterministicStrategy;
 import strategy.Strategy;
-import strategy.random.DeterministicStrategy;
 
 
 public class Main {

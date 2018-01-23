@@ -1,4 +1,4 @@
-package strategy.random;
+package strategy;
 
 import input.InputData;
 
@@ -13,7 +13,6 @@ import data.MSystemVersion;
 import data.MTrainRegistration;
 import general.ExternalChannel;
 import general.Message;
-import strategy.Strategy;
 
 public class RandomStrategy implements Strategy {
 	
