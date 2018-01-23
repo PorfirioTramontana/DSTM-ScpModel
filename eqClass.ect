@@ -1,0 +1,179 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Model name="eqClass" version="2">
+    <Class name="com.example.test.TestClass">
+        <Properties>
+            <Property name="runOnAndroid" type="boolean" value="false"/>
+        </Properties>
+        <Method name="generateData">
+            <Properties>
+                <Property name="methodRunner" type="String" value="Java Runner"/>
+                <Property name="wbMapBrowserToParam" type="boolean" value="false"/>
+                <Property name="wbBrowser" type="String" value="Chrome"/>
+                <Property name="wbMapStartUrlToParam" type="boolean" value="false"/>
+            </Properties>
+            <Parameter name="eventType" type="int" isExpected="false" expected="0" linked="false">
+                <Properties>
+                    <Property name="wbIsOptional" type="boolean" value="false"/>
+                </Properties>
+                <Comments>
+                    <TypeComments/>
+                </Comments>
+                <Choice name="choice" value="0"/>
+                <Choice name="choice0" value="1"/>
+                <Choice name="choice1" value="2"/>
+                <Choice name="choice2" value="3"/>
+            </Parameter>
+            <Parameter name="msgField1_1" type="int" isExpected="false" expected="0" linked="false">
+                <Properties>
+                    <Property name="wbIsOptional" type="boolean" value="false"/>
+                </Properties>
+                <Comments>
+                    <TypeComments/>
+                </Comments>
+                <Choice name="choice" value="0"/>
+                <Choice name="choice0" value="1"/>
+                <Choice name="choice1" value="2"/>
+                <Choice name="choice2" value="3"/>
+                <Choice name="choice3" value="4"/>
+            </Parameter>
+            <Parameter name="msgField2_1" type="int" isExpected="false" expected="0" linked="false">
+                <Properties>
+                    <Property name="wbIsOptional" type="boolean" value="false"/>
+                </Properties>
+                <Comments>
+                    <TypeComments/>
+                </Comments>
+                <Choice name="choice" value="0"/>
+                <Choice name="choice0" value="1"/>
+            </Parameter>
+            <Parameter name="msgField3_1" type="int" isExpected="false" expected="0" linked="false">
+                <Properties>
+                    <Property name="wbIsOptional" type="boolean" value="false"/>
+                </Properties>
+                <Comments>
+                    <TypeComments/>
+                </Comments>
+                <Choice name="choice" value="0"/>
+                <Choice name="choice0" value="1"/>
+                <Choice name="choice1" value="42"/>
+            </Parameter>
+            <Parameter name="msgField4_1" type="int" isExpected="false" expected="0" linked="false">
+                <Properties>
+                    <Property name="wbIsOptional" type="boolean" value="false"/>
+                </Properties>
+                <Comments>
+                    <TypeComments/>
+                </Comments>
+                <Choice name="choice" value="0"/>
+                <Choice name="choice0" value="1"/>
+                <Choice name="choice1" value="42"/>
+            </Parameter>
+            <Parameter name="msgField1_2" type="int" isExpected="false" expected="0" linked="false">
+                <Properties>
+                    <Property name="wbIsOptional" type="boolean" value="false"/>
+                </Properties>
+                <Comments>
+                    <TypeComments/>
+                </Comments>
+                <Choice name="choice" value="0"/>
+                <Choice name="choice0" value="1"/>
+                <Choice name="choice1" value="2"/>
+                <Choice name="choice2" value="3"/>
+                <Choice name="choice3" value="4"/>
+            </Parameter>
+            <Parameter name="msgField2_2" type="boolean" isExpected="false" expected="false" linked="false">
+                <Properties>
+                    <Property name="wbIsOptional" type="boolean" value="false"/>
+                </Properties>
+                <Comments>
+                    <TypeComments/>
+                </Comments>
+                <Choice name="choice" value="false"/>
+                <Choice name="choice0" value="true"/>
+            </Parameter>
+            <Parameter name="msgField1_3" type="int" isExpected="false" expected="0" linked="false">
+                <Properties>
+                    <Property name="wbIsOptional" type="boolean" value="false"/>
+                </Properties>
+                <Comments>
+                    <TypeComments/>
+                </Comments>
+                <Choice name="choice" value="0"/>
+                <Choice name="choice0" value="1"/>
+                <Choice name="choice1" value="2"/>
+                <Choice name="choice2" value="3"/>
+                <Choice name="choice3" value="4"/>
+            </Parameter>
+            <Parameter name="msgField2_3" type="int" isExpected="false" expected="0" linked="false">
+                <Properties>
+                    <Property name="wbIsOptional" type="boolean" value="false"/>
+                </Properties>
+                <Comments>
+                    <TypeComments/>
+                </Comments>
+                <Choice name="choice" value="0"/>
+                <Choice name="choice0" value="1"/>
+            </Parameter>
+            <Constraint name="constraint0">
+                <Premise>
+                    <ValueStatement rightValue="0" parameter="eventType" relation="="/>
+                </Premise>
+                <Consequence>
+                    <StatementArray operator="and">
+                        <ValueStatement rightValue="0" parameter="msgField1_1" relation="="/>
+                        <ValueStatement rightValue="0" parameter="msgField2_1" relation="="/>
+                        <ValueStatement rightValue="0" parameter="msgField3_1" relation="="/>
+                        <ValueStatement rightValue="0" parameter="msgField4_1" relation="="/>
+                        <ValueStatement rightValue="0" parameter="msgField1_2" relation="="/>
+                        <ValueStatement rightValue="false" parameter="msgField2_2" relation="="/>
+                        <ValueStatement rightValue="0" parameter="msgField1_3" relation="="/>
+                        <ValueStatement rightValue="0" parameter="msgField2_3" relation="="/>
+                    </StatementArray>
+                </Consequence>
+            </Constraint>
+            <Constraint name="constraint1">
+                <Premise>
+                    <ValueStatement rightValue="1" parameter="eventType" relation="="/>
+                </Premise>
+                <Consequence>
+                    <StatementArray operator="and">
+                        <ValueStatement rightValue="0" parameter="msgField1_2" relation="="/>
+                        <ValueStatement rightValue="false" parameter="msgField2_2" relation="="/>
+                        <ValueStatement rightValue="0" parameter="msgField1_3" relation="="/>
+                        <ValueStatement rightValue="0" parameter="msgField2_3" relation="="/>
+                    </StatementArray>
+                </Consequence>
+            </Constraint>
+            <Constraint name="constraint2">
+                <Premise>
+                    <ValueStatement rightValue="2" parameter="eventType" relation="="/>
+                </Premise>
+                <Consequence>
+                    <StatementArray operator="and">
+                        <ValueStatement rightValue="0" parameter="msgField1_1" relation="="/>
+                        <ValueStatement rightValue="0" parameter="msgField2_1" relation="="/>
+                        <ValueStatement rightValue="0" parameter="msgField3_1" relation="="/>
+                        <ValueStatement rightValue="0" parameter="msgField4_1" relation="="/>
+                        <ValueStatement rightValue="0" parameter="msgField1_3" relation="="/>
+                        <ValueStatement rightValue="0" parameter="msgField2_3" relation="="/>
+                    </StatementArray>
+                </Consequence>
+            </Constraint>
+            <Constraint name="constraint3">
+                <Premise>
+                    <ValueStatement rightValue="3" parameter="eventType" relation="="/>
+                </Premise>
+                <Consequence>
+                    <StatementArray operator="and">
+                        <ValueStatement rightValue="0" parameter="msgField1_1" relation="="/>
+                        <ValueStatement rightValue="0" parameter="msgField2_1" relation="="/>
+                        <ValueStatement rightValue="0" parameter="msgField3_1" relation="="/>
+                        <ValueStatement rightValue="0" parameter="msgField4_1" relation="="/>
+                        <ValueStatement rightValue="0" parameter="msgField1_2" relation="="/>
+                        <ValueStatement rightValue="false" parameter="msgField2_2" relation="="/>
+                    </StatementArray>
+                </Consequence>
+            </Constraint>
+        </Method>
+    </Class>
+</Model>
