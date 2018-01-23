@@ -15,6 +15,13 @@ public class Datum {
 		msgField1_3=(Integer.parseInt(st0.nextToken()));
 		msgField2_3=(Integer.parseInt(st0.nextToken()));
 	}
+	
+	public String toString() {
+		String s=new String();
+		s=eventType+","+msgField1_1+","+msgField2_1+","+msgField3_1+","+msgField4_1+","+msgField1_2+","+msgField2_2+","+msgField3_1+","+msgField4_1;
+		return s;
+		
+	}
 	// Compreso tra 0 e 3
 	public int eventType;
 	// Compreso tra 0 e  data.msgId.values().length-1 = 4
