@@ -27,6 +27,15 @@ public class MSessionEstablishment extends Machine {
 		entry,
 	}
 	
+	public enum Transition implements general.Machine.Transition {
+		T01,
+		T02,
+		T03,
+		T04,
+		T05,
+		T06,
+	}
+	
 	public MSessionEstablishment(Machine parent, State entry, ExternalChannel p1, ExternalChannel p2) {
 		super(parent, entry);
 		PchFrom = p1;

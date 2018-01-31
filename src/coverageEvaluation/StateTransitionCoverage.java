@@ -6,6 +6,8 @@ import java.io.IOException;
 import java.io.OutputStreamWriter;
 import java.io.Writer;
 
+import control.MManageTrain;
+
 
 
 public class StateTransitionCoverage {
@@ -50,6 +52,8 @@ public class StateTransitionCoverage {
 	
 	public static void calculateStateCoverage() {
 		//DEVO AVERE IL NUMERO/ELENCO COMPLETO DEGLI STATI/COVERAGE
+		//MManageTrain.State
+		//MManageTrain.Transition
 	}
 
 	public static void calculateTransitionCoverage() {

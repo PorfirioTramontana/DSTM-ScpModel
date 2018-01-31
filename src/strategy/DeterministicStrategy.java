@@ -4,6 +4,8 @@ import input.Datum;
 import input.InputData;
 import channel.CFromTrain;
 import channel.CToTrain;
+import control.MManageTrain.Transition;
+import coverageEvaluation.StateTransitionCoverage;
 import data.MAck;
 import data.MSessionEstablished;
 import data.MTrainRegistration;
@@ -31,6 +33,7 @@ public class DeterministicStrategy implements Strategy {
 	}
 	
 	private Message DeterministicCFromTrain(CFromTrain c,InputData i, int step){
+		StateTransitionCoverage.writeCoverage("Step,"+step);
 		Message m;
 		Datum d=(Datum)i.d.get(step);
 		

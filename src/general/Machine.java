@@ -9,8 +9,12 @@ public abstract class Machine extends Thread {
 	public interface State {
 	}
 	
+	public interface Transition {
+	}
+	
 	//for internal execution
 	protected State state;
+	protected Transition transition;
 	protected boolean token = false;
 	protected boolean termination = false;
 	
