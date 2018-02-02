@@ -38,6 +38,7 @@ public class RandomMain {
 			}
 			StateTransitionCoverage.closeFile();
 		}
+		StateTransitionCoverage.calculateCoverage(outputCoverageFolder);
 	}
 	
 }

@@ -44,6 +44,8 @@ public class MManageTrain extends Machine {
 	
 	@Override
 	public void run() {
+		StateTransitionCoverage.writeCoverage(name+",S#,"+(State.values().length));
+		StateTransitionCoverage.writeCoverage(name+",T#,"+(Transition.values().length));
 		StateTransitionCoverage.writeCoverage(name+",S,"+((State)state).name());
 		while (!termination) {
 			synchronized (Semaphore.getInstance()) {

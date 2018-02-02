@@ -1,5 +1,8 @@
 package control;
 
+import control.MManageTrain.State;
+import control.MManageTrain.Transition;
+import coverageEvaluation.StateTransitionCoverage;
 import data.MAck;
 import data.MSessionEstablished;
 import data.MSystemVersion;
@@ -18,7 +21,7 @@ public class MSessionEstablishment extends Machine {
 	private ExternalChannel PchFrom;
 	private ExternalChannel PchTo;
 	
-	public enum State implements general.Machine.State {
+	public static enum State implements general.Machine.State {
 		initial,
 		waitForAck,
 		waitForSessEstab,
@@ -27,7 +30,7 @@ public class MSessionEstablishment extends Machine {
 		entry,
 	}
 	
-	public enum Transition implements general.Machine.Transition {
+	public static enum Transition implements general.Machine.Transition {
 		T01,
 		T02,
 		T03,
@@ -43,7 +46,10 @@ public class MSessionEstablishment extends Machine {
 	}
 	
 	@Override
-	public void run() {		
+	public void run() {	
+		StateTransitionCoverage.writeCoverage(name+",S#,"+(State.values().length));
+		StateTransitionCoverage.writeCoverage(name+",T#,"+(Transition.values().length));		
+		StateTransitionCoverage.writeCoverage(name+",S,"+((State)state).name());
 		while (!termination) {
 			synchronized (Semaphore.getInstance()) {
 				if (token) {
@@ -53,12 +59,15 @@ public class MSessionEstablishment extends Machine {
 					case initial:					
 						System.out.println("current node = " + name + "_initial");
 						if (true) {
+							transition=Transition.T01;
+							StateTransitionCoverage.writeCoverage(name+",T,"+((Transition)transition).name());
 							System.out.println("firing transition = " + name + "_T01");
 							Message m = new MSystemVersion();
 							((MSystemVersion) m).field1 = msgId.SystemVersion;
 							((MSystemVersion) m).field2 = version.V1;
 							PchTo.sendMessage(m);
 							state = State.waitForAck;
+							StateTransitionCoverage.writeCoverage(name+",S,"+((State)state).name());
 							System.out.println("next node = " + name + "_waitForAck");
 							System.out.println("**********");
 						} else {
@@ -68,14 +77,20 @@ public class MSessionEstablishment extends Machine {
 					case waitForAck:					
 						System.out.println("current node = " + name + "_waitForAck");
 						if (PchFrom.receiveMessage()!=null && !(PchFrom.receiveMessage() instanceof MAck)) {
+							transition=Transition.T02;
+							StateTransitionCoverage.writeCoverage(name+",T,"+((Transition)transition).name());
 							System.out.println("firing transition = " + name + "_T02");
 							state = State.aborted;
+							StateTransitionCoverage.writeCoverage(name+",S,"+((State)state).name());
 							System.out.println("next node = " + name + "_aborted");
 							System.out.println("**********");
 							this.notifyTerminationToParent();
 						} else if (PchFrom.receiveMessage() instanceof MAck) {
+							transition=Transition.T03;
+							StateTransitionCoverage.writeCoverage(name+",T,"+((Transition)transition).name());
 							System.out.println("firing transition = " + name + "_T03");
 							state = State.waitForSessEstab;
+							StateTransitionCoverage.writeCoverage(name+",S,"+((State)state).name());
 							System.out.println("next node = " + name + "_waitForSessEstab");
 							System.out.println("**********");
 						} else {
@@ -85,20 +100,29 @@ public class MSessionEstablishment extends Machine {
 					case waitForSessEstab:						
 						System.out.println("current node = " + name + "_waitForSessEstab");
 						if (PchFrom.receiveMessage()!=null && !(PchFrom.receiveMessage() instanceof MSessionEstablished)) {
+							transition=Transition.T04;
+							StateTransitionCoverage.writeCoverage(name+",T,"+((Transition)transition).name());
 							System.out.println("firing transition = " + name + "_T04");
 							state = State.aborted;
+							StateTransitionCoverage.writeCoverage(name+",S,"+((State)state).name());
 							System.out.println("next node = " + name + "_aborted");
 							System.out.println("**********");
 							this.notifyTerminationToParent();
 						} else if ((PchFrom.receiveMessage() instanceof MSessionEstablished) && (((MSessionEstablished) PchFrom.receiveMessage()).field2==area.L0)) {
+							transition=Transition.T05;
+							StateTransitionCoverage.writeCoverage(name+",T,"+((Transition)transition).name());
 							System.out.println("firing transition = " + name + "_T05");
 							state = State.som;
+							StateTransitionCoverage.writeCoverage(name+",S,"+((State)state).name());
 							System.out.println("next node = " + name + "_som");
 							System.out.println("**********");
 							this.notifyTerminationToParent();
 						} else if ((PchFrom.receiveMessage() instanceof MSessionEstablished) && (((MSessionEstablished) PchFrom.receiveMessage()).field2==area.L1)) {
+							transition=Transition.T06;
+							StateTransitionCoverage.writeCoverage(name+",T,"+((Transition)transition).name());
 							System.out.println("firing transition = " + name + "_T06");
 							state = State.entry;
+							StateTransitionCoverage.writeCoverage(name+",S,"+((State)state).name());
 							System.out.println("next node = " + name + "_entry");
 							System.out.println("**********");
 							this.notifyTerminationToParent();
@@ -107,16 +131,19 @@ public class MSessionEstablishment extends Machine {
 						}
 						break;
 					case aborted:
+						StateTransitionCoverage.writeCoverage(name+",S,"+((State)state).name());
 						System.out.println("current node = " + name + "_aborted");
 						System.out.println("**********");
 						assignTokenToChildren();
 						break;
 					case som:
+						StateTransitionCoverage.writeCoverage(name+",S,"+((State)state).name());
 						System.out.println("current node = " + name + "_som");
 						System.out.println("**********");
 						assignTokenToChildren();
 						break;
 					case entry:
+						StateTransitionCoverage.writeCoverage(name+",S,"+((State)state).name());
 						System.out.println("current node = " + name + "_entry");
 						System.out.println("**********");
 						assignTokenToChildren();
